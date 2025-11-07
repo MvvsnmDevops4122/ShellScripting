@@ -9,12 +9,7 @@
 -> In most of Linux OS BASH[Bourne Again SHell] is the default shell type.
 
 ```
-
-```
-            Shell
-```
-
-User   ----------------------------> Kernal
+User   -------------- Shell--------------> Kernal
 
 ````
 
