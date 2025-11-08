@@ -176,3 +176,128 @@ else
     echo "Internet connectivity is down."
 fi
 ```
+----
+
+# 4. Case Statement in Shell Scripting
+
+## 🧾 What is a case statement?
+
+- The `case` statement is used to check **multiple conditions**.
+- It allows executing **different blocks of code** based on the value of a variable.
+- It works like **switch-case** in other programming languages.
+
+---
+
+## ✅ Case Statement Syntax (Step-by-Step)
+
+```bash
+case "$variable" in        # Start of case block to check the value of variable
+    pattern1)              # If variable matches pattern1
+        command1           # Commands to execute
+        ;;                 # End of this case block
+
+    pattern2)              # Another condition
+        command2
+        ;;                 # End of this case block
+
+    *)                     # Default case (similar to else)
+        default_command
+        ;;                 
+esac                       # End of case block (word 'case' reversed)
+````
+
+---
+
+## ✅ When to Use `case` Statement?
+
+| Use Case                 | Example Scenario                           |
+| ------------------------ | ------------------------------------------ |
+| Menu selection           | Start/Stop/Restart services via user input |
+| Script argument handling | `./script.sh start/stop/status`            |
+| File extension checking  | Identify `.txt`, `.sh`, `.jpg`, etc.       |
+| Day-based automation     | Run tasks on Monday or Friday              |
+| Package selection        | Choose between `yum` or `apt`              |
+
+---
+
+## Example 1: Basic Case Statement
+
+```bash
+#!/bin/bash
+
+fruit="apple"
+
+case $fruit in
+    apple)
+        echo "It's a fruit: apple."
+        ;;
+    banana)
+        echo "It's a fruit: banana."
+        ;;
+    orange | mandarin)
+        echo "It's a citrus fruit."
+        ;;
+    *)
+        echo "Unknown fruit."
+        ;;
+esac
+```
+
+---
+
+## Example 2: Checking Days of the Week
+
+```bash
+#!/bin/bash
+
+day="Monday"
+
+case $day in
+    Monday | Tuesday | Wednesday | Thursday | Friday)
+        echo "$day is a weekday."
+        ;;
+    Saturday | Sunday)
+        echo "$day is a weekend day."
+        ;;
+    *)
+        echo "Invalid day."
+        ;;
+esac
+```
+
+---
+
+## Example 3: Menu Driven Program
+
+```bash
+#!/bin/bash
+
+echo "Menu:"
+echo "====="
+echo "1. Display date"
+echo "2. Display calendar"
+echo "3. Display current directory"
+echo "4. Exit"
+
+read -p "Enter your choice: " choice
+
+case $choice in
+    1)
+        date
+        ;;
+    2)
+        cal
+        ;;
+    3)
+        pwd
+        ;;
+    4)
+        echo "Exiting program."
+        exit 0
+        ;;
+    *)
+        echo "Invalid choice: $choice. Please enter a number between 1 and 4."
+        ;;
+esac
+```
+
